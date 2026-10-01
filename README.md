@@ -16,10 +16,10 @@ Each folder below corresponds to one deliverable. Instructions for each one will
   | `lab4/` | Week 4 | Docker fundamentals |
   | `lab5/` | Week 6 | Terraform introduction and reliable CI |
   | `lab6/` | Week 8 | Configuration management with Ansible and golden AMIs |
-  | `lab7/` | Week 12 | Security and policy-as-code |
-  | `lab8/` | Weeks 9–10 | Kubernetes fundamentals and CI/CD to Kubernetes |
+  | `lab7/` | Weeks 9–10 | Kubernetes fundamentals and CI/CD to Kubernetes |
+  | `lab8/` | Week 12 | Security and policy-as-code |
 
-  Weeks 5, 7, 11 and 13 have no separate lab folder — that week's hands-on work feeds into an assignment or the final project instead. Note that `lab7/` is the security lab: the grading pipeline requires it to have **no HIGH or CRITICAL `tfsec` findings**, which is the whole point of that exercise. Every other folder's scan results are informational.
+  Weeks 5, 7, 11 and 13 have no separate lab folder — that week's hands-on work feeds into an assignment or the final project instead. Note that `lab8/` is the security lab: the grading pipeline requires it to have **no HIGH or CRITICAL `tfsec` findings**, which is the whole point of that exercise. Every other folder's scan results are informational.
 - `assignment1/` — Assignment 1
 - `assignment2/` — Assignment 2
 - `final-project/` — Final Project
