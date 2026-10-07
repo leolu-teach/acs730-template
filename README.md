@@ -8,18 +8,20 @@ Each folder below corresponds to one deliverable. Instructions for each one will
 
 - `lab1/` through `lab8/` — the weekly labs. **The lab number is not the week number** after Lab 4 — there are 14 weeks but 8 labs. Put each lab's work in the folder named below, not in the folder matching the week number:
 
-  | Folder | Week | Topic |
-  |---|---|---|
-  | `lab1/` | Week 1 | Version control and the AWS CLI |
-  | `lab2/` | Week 2 | Linux administration, deploying a web app to EC2 |
-  | `lab3/` | Week 3 | GitHub Actions, Terraform basics, session-scoped credentials |
-  | `lab4/` | Week 4 | Docker fundamentals |
-  | `lab5/` | Week 6 | Terraform introduction and reliable CI |
-  | `lab6/` | Week 8 | Configuration management with Ansible and golden AMIs |
-  | `lab7/` | Weeks 9–10 | Kubernetes fundamentals and CI/CD to Kubernetes |
-  | `lab8/` | Week 12 | Security and policy-as-code |
+  | Folder | Week(s) | Topic | Due (Fall 2026, 11:59 PM) |
+  |---|---|---|---|
+  | `lab1/` | Week 1 | Version control and the AWS CLI | Fri Sept 25 |
+  | `lab2/` | Week 2 | Linux administration, deploying a web app to EC2 | Fri Oct 2 |
+  | `lab3/` | Week 3 | GitHub Actions, Terraform basics, session-scoped credentials | Fri Oct 9 |
+  | `lab4/` | Weeks 4 **and 5** | Docker fundamentals, then the GitHub Actions deep dive that extends the same build | Fri Oct 23 |
+  | `lab5/` | Week 6 | Terraform introduction and reliable CI | Fri Nov 6 |
+  | `lab6/` | Week 8 | Configuration management with Ansible and golden AMIs | Fri Nov 20 |
+  | `lab7/` | Week 12 | Security and policy-as-code | Wed Dec 16 |
+  | `lab8/` | Weeks 9–10 | Kubernetes fundamentals and CI/CD to Kubernetes | Fri Dec 11 |
 
-  Weeks 5, 7, 11 and 13 have no separate lab folder — that week's hands-on work feeds into an assignment or the final project instead. Note that `lab8/` is the security lab: the grading pipeline requires it to have **no HIGH or CRITICAL `tfsec` findings**, which is the whole point of that exercise. Every other folder's scan results are informational.
+  Each lab is due at 11:59 PM on the Friday of the week **after** it is taught — you get the class, then a full week. Weeks 7, 11, 13 and 14 have no separate lab folder: that week's hands-on work feeds into `assignment1/` or `final-project/` instead, and is graded with that item. Week 5 has no folder of its own either — it deepens the pipeline around `lab4/`, which is why `lab4/` is not due until after Week 5. **Do not create a `lab5/` in Week 5**; `lab5/` belongs to Week 6.
+
+  Assignment 1 is due **Fri Nov 27**, Assignment 2 **Fri Dec 4**, and the Final Project repository is frozen **Wed Dec 16**. Blackboard carries the same dates and is authoritative if the two ever disagree. Note that `lab7/` is the security lab: the grading pipeline requires it to have **no HIGH or CRITICAL `tfsec` findings**, which is the whole point of that exercise. Every other folder's scan results are informational.
 - `assignment1/` — Assignment 1
 - `assignment2/` — Assignment 2
 - `final-project/` — Final Project
