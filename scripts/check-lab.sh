@@ -11,7 +11,7 @@
 # Checks per folder (mirroring the instructor pipeline):
 #   *.sh            -> bash -n syntax
 #   *.tf dirs       -> terraform init -backend=false && terraform validate (+ tfsec if installed;
-#                      tfsec HIGH/CRITICAL is a HARD FAIL for lab7, informational elsewhere)
+#                      tfsec HIGH/CRITICAL is a HARD FAIL for lab8, informational elsewhere)
 #   Dockerfile      -> docker build (if docker available)
 #   ansible/        -> ansible-playbook --syntax-check (playbooks), YAML parse (inventory)
 #   k8s/*.yaml      -> YAML parse (grading additionally runs kubeconform)
@@ -66,19 +66,19 @@ case "$DIR" in
     req "$DIR/packer/web.pkr.hcl"; req "$DIR/packer/files/index.html"; req "$DIR/scripts/boot-to-ready.sh"
     req "$DIR/README.md"; req "$DIR/evidence/*"
     req ".github/workflows/lab6-configure.yml" ;;
-  lab7)
-    req "$DIR/main.tf"; req "$DIR/policies/lab7-deploy-policy.json"
-    req "$DIR/README.md"; req "$DIR/evidence/*"
-    req ".github/workflows/lab7-policy.yml" ;;
   lab8)
+    req "$DIR/main.tf"; req "$DIR/policies/lab8-deploy-policy.json"
+    req "$DIR/README.md"; req "$DIR/evidence/*"
+    req ".github/workflows/lab8-policy.yml" ;;
+  lab7)
     req "$DIR/kind-cluster.yaml"; req "$DIR/scripts/create-cluster.sh"
     req "$DIR/k8s/namespace.yaml"; req "$DIR/k8s/configmap.yaml"; req "$DIR/k8s/secret.yaml"
     req "$DIR/k8s/deployment.yaml"; req "$DIR/k8s/service.yaml"
     req "$DIR/README.md"; req "$DIR/evidence/*"
-    req ".github/workflows/lab8-ci.yml"
+    req ".github/workflows/lab7-ci.yml"
     # Week 10 half. Warn rather than fail, so running this at the end of Week 9
     # on a correct submission does not go red.
-    for w10 in "$DIR/k8s/rbac.yaml" ".github/workflows/lab8-deploy.yml"; do
+    for w10 in "$DIR/k8s/rbac.yaml" ".github/workflows/lab7-deploy.yml"; do
       if compgen -G "$w10" >/dev/null; then pass "required (Week 10): $w10"
       else warn "not present yet: $w10 -- required for the Week 10 half of this lab"; fi
     done ;;
@@ -116,11 +116,11 @@ while IFS= read -r tfd; do
       if tfsec "$tfd" --minimum-severity HIGH >/dev/null 2>&1; then
         pass "tfsec (HIGH/CRITICAL clean) $tfd"
       else
-        if [ "$DIR" = "lab7" ]; then fail "tfsec HIGH/CRITICAL findings in $tfd -- grading HARD-FAILS lab7 on this; run: tfsec $tfd"
+        if [ "$DIR" = "lab8" ]; then fail "tfsec HIGH/CRITICAL findings in $tfd -- grading HARD-FAILS lab8 on this; run: tfsec $tfd"
         else warn "tfsec has findings in $tfd (informational for this folder; grader reviews them): tfsec $tfd"; fi
       fi
     else
-      [ "$DIR" = "lab7" ] && skip "tfsec on $tfd" || true
+      [ "$DIR" = "lab8" ] && skip "tfsec on $tfd" || true
     fi
   else
     skip "terraform validate on $tfd"

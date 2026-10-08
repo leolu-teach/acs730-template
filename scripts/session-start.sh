@@ -58,7 +58,7 @@ else
   echo "$WARN gh not authenticated (or not in a repo) -- if you haven't done Lab 1 Part 2 on this box: gh auth login && gh auth setup-git"
 fi
 
-step "4/5  Self-hosted runner (Lab 8 onward -- skipped if not installed)"
+step "4/5  Self-hosted runner (Lab 7 onward -- skipped if not installed)"
 if [ -d "$HOME/actions-runner" ]; then
   if sudo "$HOME/actions-runner/svc.sh" status 2>/dev/null | grep -q "active (running)"; then
     echo "$PASS runner service running (GitHub may take ~30s to show it Idle)"
@@ -67,10 +67,10 @@ if [ -d "$HOME/actions-runner" ]; then
     sudo "$HOME/actions-runner/svc.sh" start || echo "$FAIL could not start; check: sudo ~/actions-runner/svc.sh status"
   fi
 else
-  echo "   (no runner installed -- fine before Lab 8)"
+  echo "   (no runner installed -- fine before Lab 7)"
 fi
 
-step "5/5  Kubernetes cluster (Lab 8 onward -- skipped if not created)"
+step "5/5  Kubernetes cluster (Lab 7 onward -- skipped if not created)"
 if command -v kind >/dev/null 2>&1 && kind get clusters 2>/dev/null | grep -q "acs730"; then
   if kubectl get nodes >/dev/null 2>&1; then
     kubectl get nodes | sed "s/^/$PASS /"
@@ -79,7 +79,7 @@ if command -v kind >/dev/null 2>&1 && kind get clusters 2>/dev/null | grep -q "a
     echo "     docker start acs730-control-plane   (then wait ~1 minute)"
   fi
 else
-  echo "   (no kind cluster -- fine before Lab 8)"
+  echo "   (no kind cluster -- fine before Lab 7)"
 fi
 
 echo

@@ -9,8 +9,8 @@
 #   ./scripts/install-lab-tools.sh lab3    # Terraform
 #   ./scripts/install-lab-tools.sh lab4    # Docker
 #   ./scripts/install-lab-tools.sh lab6    # Ansible + Packer + AWS collections
-#   ./scripts/install-lab-tools.sh lab7    # tfsec + gitleaks
-#   ./scripts/install-lab-tools.sh lab8    # kubectl + kind
+#   ./scripts/install-lab-tools.sh lab8    # tfsec + gitleaks
+#   ./scripts/install-lab-tools.sh lab7    # kubectl + kind
 #   ./scripts/install-lab-tools.sh all
 #
 # Versions are pinned to match the lab handouts on purpose -- do not "upgrade"
@@ -82,7 +82,7 @@ install_lab6() {
   echo "    Note: always call '/usr/bin/packer' if plain 'packer' prints cracklib usage text."
 }
 
-install_lab7() {
+install_lab8() {
   if have tfsec && [ "$(tfsec --version 2>/dev/null)" = "${TFSEC_VERSION}" ]; then
     say "tfsec ${TFSEC_VERSION} already installed"
   else
@@ -105,7 +105,7 @@ install_lab7() {
   gitleaks version
 }
 
-install_lab8() {
+install_lab7() {
   if have kubectl; then say "kubectl already installed: $(kubectl version --client | head -1)"; else
     say "Installing kubectl ${KUBECTL_VERSION}"
     curl -sLo /tmp/kubectl "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
@@ -116,8 +116,8 @@ install_lab8() {
     curl -sLo /tmp/kind "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64"
     sudo install /tmp/kind /usr/local/bin/kind && rm -f /tmp/kind
   fi
-  echo "    Reminder: Lab 8 assumes the workstation was resized to t3.large first"
-  echo "    (Console: Stop -> Change instance type -> Start; see Lab 8 Part A0)."
+  echo "    Reminder: Lab 7 assumes the workstation was resized to t3.large first"
+  echo "    (Console: Stop -> Change instance type -> Start; see Lab 7 Part A0)."
   free -h | awk 'NR<=2'
 }
 
@@ -126,8 +126,8 @@ case "$TARGET" in
   lab3) install_lab3 ;;
   lab4) install_lab4 ;;
   lab6) install_lab6 ;;
-  lab7) install_lab7 ;;
   lab8) install_lab8 ;;
+  lab7) install_lab7 ;;
   all)  install_lab3; install_lab4; install_lab6; install_lab7; install_lab8 ;;
   *) echo "Unknown target '$TARGET'. Use lab3|lab4|lab6|lab7|lab8|all." >&2; exit 1 ;;
 esac
